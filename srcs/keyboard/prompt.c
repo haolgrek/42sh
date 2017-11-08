@@ -6,7 +6,7 @@
 /*   By: rluder <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/05 19:42:22 by rluder            #+#    #+#             */
-/*   Updated: 2017/05/19 23:16:22 by rluder           ###   ########.fr       */
+/*   Updated: 2017/11/08 15:51:18 by rluder           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,18 @@ int							print_prompt(void)
 {
 	char					promt[SIZE_PROMT + 5];
 	char					*ret;
+	char					*addr;
 	t_21sh					*sh;
 
 	if ((ret = tgetstr("sc", NULL)) == NULL)
 		return (false);
 	tputs(ret, 0, my_out_put);
 	if (getcwd(promt, SIZE_PROMT) == NULL || (sh = get_21sh(NULL)) == NULL)
-		return (false);
+	{
+		addr = ft_strrchr(promt, '/');
+		*addr = '\0';
+		chdir(promt);
+	}
 	if (g_lines && GL_SRCH && g_lines->hdc == true)
 		return (heredoc_prompt(sh));
 	if (g_curs && GL_SRCH && (g_curs->line || g_curs == g_lines))
