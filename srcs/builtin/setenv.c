@@ -6,12 +6,24 @@
 /*   By: rluder <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/29 19:08:27 by rluder            #+#    #+#             */
-/*   Updated: 2017/02/25 20:48:10 by rluder           ###   ########.fr       */
+/*   Updated: 2017/11/12 21:10:14 by rluder           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incs/shell_21sh.h"
 #include "../../incs/key.h"
+
+int				cd_change_oldpwd(char *old_pwd)
+{
+	if (check_if_env_exist("OLDPWD", NULL) == false)
+	{
+		if (add_env_("OLDPWD", old_pwd) == ERROR)
+			return (false);
+	}
+	else if (modify_env_value("OLDPWD", old_pwd) == false)
+		return (false);
+	return (true);
+}
 
 static int		ft_put_error(int choice)
 {

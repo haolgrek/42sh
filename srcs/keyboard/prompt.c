@@ -6,7 +6,7 @@
 /*   By: rluder <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/05 19:42:22 by rluder            #+#    #+#             */
-/*   Updated: 2017/11/08 16:31:30 by rluder           ###   ########.fr       */
+/*   Updated: 2017/11/12 20:39:31 by rluder           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int							print_prompt(void)
 	if (getcwd(promt, SIZE_PROMT) == NULL || (sh = get_21sh(NULL)) == NULL)
 	{
 		chdir("/");
-		return(print_prompt());
+		return (print_prompt());
 	}
 	if (g_lines && GL_SRCH && g_lines->hdc == true)
 		return (heredoc_prompt(sh));

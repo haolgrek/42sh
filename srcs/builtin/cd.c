@@ -6,7 +6,7 @@
 /*   By: rluder <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/29 17:52:55 by rluder            #+#    #+#             */
-/*   Updated: 2017/11/03 19:00:01 by rluder           ###   ########.fr       */
+/*   Updated: 2017/11/12 21:09:45 by rluder           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,7 @@ static int			cd_change_pwd(char *path)
 	}
 	else if (modify_env_value("PWD", new_path) == false)
 		return (false);
-	if (check_if_env_exist("OLDPWD", NULL) == false)
-	{
-		if (add_env_("OLDPWD", old_pwd) == ERROR)
-			return (false);
-	}
-	else if (modify_env_value("OLDPWD", old_pwd) == false)
+	if (cd_change_oldpwd(old_pwd) == false)
 		return (false);
 	free(new_path);
 	free(old_pwd);

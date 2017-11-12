@@ -6,7 +6,7 @@
 /*   By: rluder <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/04 17:18:30 by rluder            #+#    #+#             */
-/*   Updated: 2017/05/26 18:07:44 by rluder           ###   ########.fr       */
+/*   Updated: 2017/11/12 21:07:22 by rluder           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -354,6 +354,7 @@ void						sig_manager(void);
 **	BUILTIN
 */
 int							cd(t_cmd *cmd);
+int							cd_change_oldpwd(char *old_pwd);
 int							builtin_setenv(t_cmd *cmd);
 int							builtin_unsetenv(t_cmd *content);
 int							builtin_exit(t_cmd *cmd);

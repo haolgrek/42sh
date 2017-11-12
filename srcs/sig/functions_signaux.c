@@ -6,7 +6,7 @@
 /*   By: rluder <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/04 14:30:40 by rluder            #+#    #+#             */
-/*   Updated: 2017/11/06 15:01:17 by rluder           ###   ########.fr       */
+/*   Updated: 2017/11/12 20:36:31 by rluder           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,4 +59,5 @@ void						sig_manager(void)
 	signal(SIGINT, retake_entree);
 	signal(SIGCONT, suspend_and_continue);
 	signal(SIGQUIT, suspend_and_continue);
+	signal(SIGTSTP, SIG_IGN);
 }
